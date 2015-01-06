@@ -15,6 +15,7 @@ public class HomeBaseActivity extends FragmentActivity {
 	private TabHost mTabHost;
 	private ViewPager mViewPager;
 	private HomeTabAdapter mHomeTabAdapter;
+//	After uploaded Github data
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
