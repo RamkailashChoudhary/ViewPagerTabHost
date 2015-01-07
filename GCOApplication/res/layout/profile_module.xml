@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_margin="20dp"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <ImageView 
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_gravity="right" android:layout_marginRight="5dp" android:layout_marginTop="5dp"
+        android:background="@drawable/ic_launcher" android:id="@+id/profileEditBtn"
+        />    
+    <ImageView 
+        android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/userProfileImg"
+        android:layout_gravity="center_horizontal" android:background="@drawable/ic_launcher"
+        />
+    <LinearLayout 
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:layout_marginLeft="25dp" android:layout_marginRight="25dp"
+        >
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserName"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserEmail"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserPassword"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserDOB"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserLikes"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp" android:id="@+id/profileUserRoleMode"
+	        />
+	    <TextView 
+	        android:layout_width="wrap_content" android:layout_height="wrap_content"
+	        android:text="xdgsg" android:layout_marginTop="10dp"
+	        />
+    </LinearLayout>
+    <ImageView 
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginRight="25dp" android:layout_gravity="right"
+        android:background="@drawable/ic_launcher" android:id="@+id/saveButton"
+        />
+</LinearLayout>
