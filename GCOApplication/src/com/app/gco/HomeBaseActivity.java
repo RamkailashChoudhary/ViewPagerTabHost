@@ -20,11 +20,11 @@ public class HomeBaseActivity extends FragmentActivity {
 
 		  FragmentPagerAdapter adapter = new  HomeTabAdapter(getSupportFragmentManager());
 
-	        ViewPager pager = (ViewPager)findViewById(R.id.pager);
-	        pager.setAdapter(adapter);
+	      ViewPager pager = (ViewPager)findViewById(R.id.pager);
+	      pager.setAdapter(adapter);
 
-	        Toast.makeText(HomeBaseActivity.this, "Default Tab", Toast.LENGTH_SHORT).show();
-	        TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
-	        indicator.setViewPager(pager);
+	      Toast.makeText(HomeBaseActivity.this, "Default Tab", Toast.LENGTH_SHORT).show();
+	      TabPageIndicator indicator = (TabPageIndicator)findViewById(R.id.indicator);
+	      indicator.setViewPager(pager);
 	}
 }
