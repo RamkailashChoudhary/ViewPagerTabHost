@@ -3,6 +3,11 @@ package com.app.gco.uiview;
 import com.app.gco.HomeBaseActivity;
 import com.app.gco.InstructionBoardActivity;
 import com.app.gco.R;
+import com.app.gco.dao.RegistrationData;
+import com.app.gco.delegates.ServerAPI;
+import com.app.gco.utils.Utils;
+import com.app.gco.webrequest.RequestDataModule;
+import com.loopj.android.http.RequestParams;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,6 +26,7 @@ public class SignUpFragmentModule extends Fragment implements OnClickListener{
 	private EditText emailTxt,userNameTxt,passwordTxt,confirmPassword;
 	private OnClickListener parentClickListener,forgotPasswordListener;
 	private TextView forgotPasswordTxt;
+	private RequestDataModule mRequestDataModule;
 	
 	public static SignUpFragmentModule newInstance(OnClickListener clickListener,OnClickListener forgotPassword){
 		
@@ -60,10 +66,50 @@ public class SignUpFragmentModule extends Fragment implements OnClickListener{
 	public void onClick(View v) {
 	
 		if(v == signInsignUpButton){
+		
+			if(emailTxt.getText().toString().length() > 0){
+				
+				if(Utils.isValidEmailAddress(emailTxt.getText().toString())){
+				 
+					if(userNameTxt.getText().toString().length() > 0){
+						
+						if(Utils.isConfirmPassword(passwordTxt.getText().toString(),confirmPassword.getText().toString())){
+						 
+							registrationServerRequest();
+						}else
+							Utils.showToast(getActivity(), "Please enter same password");
+					}else
+						Utils.showToast(getActivity(), "Please enter user name");
+				}else
+					Utils.showToast(getActivity(), "Please enter correct email");
+			}else
+				Utils.showToast(getActivity(), "Please enter email");
 			
-			Intent instructionBoard = new Intent(getActivity(),InstructionBoardActivity.class);
-			startActivity(instructionBoard);
-			//web service
+		/*	Intent instructionBoard = new Intent(getActivity(),InstructionBoardActivity.class);
+			startActivity(instructionBoard); */
 		}
+	}
+	
+	private void registrationServerRequest(){
+
+		mRequestDataModule = new RequestDataModule(getActivity());
+		mRequestDataModule.setUrl(ServerAPI.REGISTRATION);
+		mRequestDataModule.setRequestTag(ServerAPI.REGISTRATION_TAG);
+		RequestParams params = new RequestParams();
+		params.put("name", userNameTxt.getText().toString());
+		params.put("email", emailTxt.getText().toString());
+		params.put("password", passwordTxt.getText().toString());
+		params.put("dob", "");
+		params.put("facebookid", "");
+		params.put("twitterid", "");
+		params.put("googleplusid", "");
+		params.put("like", "");
+		params.put("loveseating", "");
+		params.put("rolemodel", "");
+		params.put("lang", "");
+        mRequestDataModule.setParams(params);
+        mRequestDataModule.setClassType(RegistrationData.class);
+        mRequestDataModule.setMethodType(ServerAPI.POST_METHOD);
+        mRequestDataModule.execute();
 	}
 }
