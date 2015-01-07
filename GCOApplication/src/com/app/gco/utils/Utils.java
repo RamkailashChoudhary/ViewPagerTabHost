@@ -23,4 +23,9 @@ public class Utils {
 		Matcher m = p.matcher(email);
 		return m.matches();
 	}
+	
+	public static boolean isConfirmPassword(String password,String confirmPassword){
+		
+		return password.equalsIgnoreCase(confirmPassword);
+	}
 }
