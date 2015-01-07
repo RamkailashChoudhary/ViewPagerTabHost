@@ -4,9 +4,10 @@
     <string name="app_name">GCOApplication</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="facebookAppId">418438641637642</string>
+    <string name="facebookAppId">420442664770573</string>
     <string name="loginBoardWelcome"><![CDATA[Welcome to #GCO]]></string>
     <string name="loginBoardWhatabout"><![CDATA[What are you up to?]]></string>
     <string name="loginBoardUsingSocialTxt"><![CDATA[Login using you social accounts]]></string>
     <string name="loginBoardForgot"><![CDATA[Forgot Your Password?]]></string>
+    <string name="takeATest">TAKE A TEST</string>
 </resources>
