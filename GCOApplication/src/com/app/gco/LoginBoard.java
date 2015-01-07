@@ -15,7 +15,10 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Toast;
 
+import com.app.gco.dao.LoginData;
+import com.app.gco.delegates.BaseResponse;
 import com.app.gco.delegates.ServerAPI;
+import com.app.gco.utils.Utils;
 
 public class LoginBoard extends LoginBoardBaseActivity {
 
@@ -171,6 +174,32 @@ public class LoginBoard extends LoginBoardBaseActivity {
 
 			}
 		}
+	}
 
+	@Override
+	public void onSuccess(BaseResponse response, int tag) {
+
+		if(tag == ServerAPI.IS_FACEBOOK_USER_TAG){
+			
+			LoginData mLoginData = (LoginData) response;
+			if(!mLoginData.getMessage().equalsIgnoreCase("false") && (mLoginData.getName() != null && !mLoginData.getName().equalsIgnoreCase("null"))){
+				
+				System.out.println("Print the User Logined Successfully");
+			}else
+				System.out.println("Print the Else portion");
+			
+		}else if(tag == ServerAPI.IS_TWITTER_USER_TAG){
+			
+			LoginData mLoginData = (LoginData) response;
+		}else if(tag == ServerAPI.IS_GOOGLE_PLUS_USER_TAG){
+			
+			LoginData mLoginData = (LoginData) response;
+		}
+	}
+
+	@Override
+	public void onFailure(String errorMsg) {
+
+		Utils.showToast(LoginBoard.this, errorMsg);
 	}
 }

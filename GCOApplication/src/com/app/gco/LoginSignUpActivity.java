@@ -1,9 +1,14 @@
 package com.app.gco;
 
+import com.app.gco.dao.LoginData;
+import com.app.gco.dao.RegistrationData;
+import com.app.gco.delegates.BaseResponse;
+import com.app.gco.delegates.ResponseDelegate;
 import com.app.gco.delegates.ServerAPI;
 import com.app.gco.uiview.ForgotPasswordFragmentModule;
 import com.app.gco.uiview.SignInFragmentModule;
 import com.app.gco.uiview.SignUpFragmentModule;
+import com.app.gco.utils.Utils;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,8 +19,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
-public class LoginSignUpActivity extends FragmentActivity implements OnClickListener {
+public class LoginSignUpActivity extends FragmentActivity implements OnClickListener, ResponseDelegate {
 
 	private RelativeLayout backLayout;
 	private SignInFragmentModule mSignInFragmentModule;
@@ -134,4 +140,24 @@ public class LoginSignUpActivity extends FragmentActivity implements OnClickList
 			mFragmentTransaction.commit();
 		}
 	};
+
+	@Override
+	public void onSuccess(BaseResponse response, int tag) {
+
+		if(tag == ServerAPI.LOGIN_TAG){
+			
+			LoginData mLoginData = (LoginData) response;
+			Toast.makeText(LoginSignUpActivity.this, "Login Success"+mLoginData.getName(), Toast.LENGTH_SHORT).show();
+		} else if(tag == ServerAPI.REGISTRATION_TAG){
+			
+			RegistrationData mRegistrationData = (RegistrationData) response;
+			Toast.makeText(LoginSignUpActivity.this, "Registered Success", Toast.LENGTH_SHORT).show();
+		} 
+	}
+
+	@Override
+	public void onFailure(String errorMsg) {
+
+		Utils.showToast(LoginSignUpActivity.this, errorMsg);	
+	}
 }

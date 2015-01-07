@@ -21,6 +21,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.app.gco.dao.LoginData;
+import com.app.gco.delegates.ResponseDelegate;
+import com.app.gco.delegates.ServerAPI;
+import com.app.gco.webrequest.RequestDataModule;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
@@ -37,8 +41,9 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.plus.Plus;
 import com.google.android.gms.plus.model.people.Person;
+import com.loopj.android.http.RequestParams;
 
-public abstract class LoginBoardBaseActivity extends FragmentActivity implements OnClickListener, ConnectionCallbacks, OnConnectionFailedListener {
+public abstract class LoginBoardBaseActivity extends FragmentActivity implements OnClickListener, ConnectionCallbacks, OnConnectionFailedListener, ResponseDelegate {
 
 	protected Button signUpButton, signInButton;
 	protected ImageView twitterLoginBtn;
@@ -67,6 +72,8 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
     protected String oauth_url,oauth_verifier,profile_url;
     protected ProgressDialog progress;
 
+    protected RequestDataModule mRequestDataModule;
+    
 	@Override
 	protected void onCreate(Bundle arg0) {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -101,6 +108,7 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
 			public void onUserInfoFetched(GraphUser user) {
 				if (user != null) {
 					
+					isUserFacebookRegistered(user.getId());
 					Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_LONG).show();
 				} else {
 					
@@ -344,5 +352,44 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
 		super.onSaveInstanceState(savedState);
 
 		uiHelper.onSaveInstanceState(savedState);
+	}
+	
+	private void isUserFacebookRegistered(String fbId){
+		
+		mRequestDataModule = new RequestDataModule(LoginBoardBaseActivity.this);
+		mRequestDataModule.setMethodType(ServerAPI.POST_METHOD);
+		RequestParams params = new RequestParams();
+		params.put("facebookid", fbId);
+		mRequestDataModule.setParams(params);
+		mRequestDataModule.setUrl(ServerAPI.IS_FACEBOOK_USER);
+		mRequestDataModule.setRequestTag(ServerAPI.IS_FACEBOOK_USER_TAG);
+		mRequestDataModule.setClassType(LoginData.class);
+		mRequestDataModule.execute();
+	}
+	
+	private void isUserTwitterRegistered(String twitterId){
+		
+		mRequestDataModule = new RequestDataModule(LoginBoardBaseActivity.this);
+		mRequestDataModule.setMethodType(ServerAPI.POST_METHOD);
+		RequestParams params = new RequestParams();
+		params.put("twitterid", twitterId);
+		mRequestDataModule.setParams(params);
+		mRequestDataModule.setUrl(ServerAPI.IS_TWITTER_USER);
+		mRequestDataModule.setRequestTag(ServerAPI.IS_TWITTER_USER_TAG);
+		mRequestDataModule.setClassType(LoginData.class);
+		mRequestDataModule.execute();
+	}
+	
+	private void isUserGooglePlusRegistered(String googleId){
+		
+		mRequestDataModule = new RequestDataModule(LoginBoardBaseActivity.this);
+		mRequestDataModule.setMethodType(ServerAPI.POST_METHOD);
+		RequestParams params = new RequestParams();
+		params.put("googleplusid", googleId);
+		mRequestDataModule.setParams(params);
+		mRequestDataModule.setUrl(ServerAPI.IS_GOOGLE_PLUS_USER);
+		mRequestDataModule.setRequestTag(ServerAPI.IS_GOOGLE_PLUS_USER_TAG);
+		mRequestDataModule.setClassType(LoginData.class);
+		mRequestDataModule.execute();
 	}
 }
