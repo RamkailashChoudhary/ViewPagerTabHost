@@ -3,6 +3,12 @@ package com.app.gco;
 import java.util.Arrays;
 import java.util.List;
 
+import twitter4j.Twitter;
+import twitter4j.TwitterFactory;
+import twitter4j.auth.AccessToken;
+import twitter4j.auth.RequestToken;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.IntentSender.SendIntentException;
 import android.os.Bundle;
@@ -10,7 +16,9 @@ import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.facebook.Session;
@@ -33,6 +41,7 @@ import com.google.android.gms.plus.model.people.Person;
 public abstract class LoginBoardBaseActivity extends FragmentActivity implements OnClickListener, ConnectionCallbacks, OnConnectionFailedListener {
 
 	protected Button signUpButton, signInButton;
+	protected ImageView twitterLoginBtn;
 
 	//GOOGLE PLUS CONFIGURATION
 	protected SignInButton googlePlusSignIn;
@@ -47,6 +56,16 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
 	private boolean mSignInClicked;
 	private static final int RC_SIGN_IN = 0;
 	private boolean mIntentInProgress;
+	
+	
+	//TWITTER CONFIGURATION
+	protected Twitter twitter;
+    protected RequestToken requestToken = null;
+    protected AccessToken accessToken;
+    protected Dialog auth_dialog;
+    protected WebView web;
+    protected String oauth_url,oauth_verifier,profile_url;
+    protected ProgressDialog progress;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -64,6 +83,7 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
 		signInButton = (Button) findViewById(R.id.boradSignInButton);
 		signUpButton = (Button) findViewById(R.id.boardSignUpButton);
 		googlePlusSignIn = (SignInButton) findViewById(R.id.google_plus_button);
+		twitterLoginBtn = (ImageView) findViewById(R.id.twitterLoginBtn);
 
 		signInButton.setOnClickListener(this);
 		signUpButton.setOnClickListener(this);
@@ -88,6 +108,11 @@ public abstract class LoginBoardBaseActivity extends FragmentActivity implements
 				}
 			}
 		});
+		
+		twitter = new TwitterFactory().getInstance();
+	 	twitter.setOAuthConsumer("5dlRDrNUl1JR6SVw23Uk3nPZc", "7puzDhGNNW5GIJbbTuH6TZxSg4PxCBYaUaMt8tn5EZ7D1b03a2");
+	 	
+	 	twitterLoginBtn.setOnClickListener(this);
 	}
 
 	protected void onStart() {
