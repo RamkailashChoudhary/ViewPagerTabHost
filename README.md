@@ -1,4 +1,5 @@
-# ViewPagerTabHost<?xml version="1.0" encoding="utf-8"?>
+# ViewPagerTabHost
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <string name="app_name">GCO</string>
@@ -121,3 +122,964 @@
 	
     
 </resources>
+
+This is the JAVA CLASS   - >
+
+
+package com.app.gco.uiview;
+
+import com.app.gco.R;
+
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.text.Html;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+public class InfoInnerFragmentModule extends Fragment implements OnClickListener{
+
+	private RelativeLayout didYouKnowLayoutView,beActivateLayoutView,beStrongLayoutView,topLayoutView;
+	private LinearLayout didYouKnowLayout,weStrongLayout,beActiveLayout;
+	private TextView titleTxt,titleText,secondTxt,thirdTxt,forthTxt,fiveTxt,sixthTxt,sevenTxt,eightTxt,nineTxt,tenTxtView;
+	
+	@Override
+	public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+		View rootView = inflater.inflate(R.layout.info_tab_module, container, false);
+		initializeGUI(rootView);
+		return rootView;
+	}
+	
+	private void initializeGUI(View rootView){
+//		titlTemp
+		didYouKnowLayoutView = (RelativeLayout)rootView.findViewById(R.id.didYouKnowLayoutView);
+		beActivateLayoutView = (RelativeLayout) rootView.findViewById(R.id.beActivateLayoutView);
+		beStrongLayoutView = (RelativeLayout) rootView.findViewById(R.id.beStrongLayoutView);
+		topLayoutView = (RelativeLayout) rootView.findViewById(R.id.topStripLayoutView);
+		didYouKnowLayout = (LinearLayout) rootView.findViewById(R.id.didYouKnow);
+		weStrongLayout = (LinearLayout) rootView.findViewById(R.id.weStrong);
+		beActiveLayout = (LinearLayout) rootView.findViewById(R.id.beActive);
+		titleTxt = (TextView) rootView.findViewById(R.id.topTitleViewTxt);
+		
+		titleText = (TextView) rootView.findViewById(R.id.firstTxt);
+		titleText.setText(Html.fromHtml(getString(R.string.beActive_1)));
+		secondTxt = (TextView) rootView.findViewById(R.id.secondTxt);
+		thirdTxt = (TextView) rootView.findViewById(R.id.thirdTxt);
+		forthTxt = (TextView) rootView.findViewById(R.id.fourthTxt);
+		fiveTxt = (TextView) rootView.findViewById(R.id.fiveTxt);
+		sixthTxt = (TextView) rootView.findViewById(R.id.sixviewTxt);
+		sevenTxt = (TextView) rootView.findViewById(R.id.seventhTxt);
+		eightTxt = (TextView) rootView.findViewById(R.id.eightTxt);
+		nineTxt = (TextView) rootView.findViewById(R.id.nineTxt);
+		tenTxtView = (TextView) rootView.findViewById(R.id.tenTxtView);
+		
+		
+		didYouKnowLayoutView.setOnClickListener(this);
+		beActivateLayoutView.setOnClickListener(this);
+		beStrongLayoutView.setOnClickListener(this);
+	}
+	
+	private void setBeActivateTxt(){
+		
+		String txt1 = "<html><body><strong><font color='#f69135'>Make sure you</font></strong> exercise for an hour daily. You could divide this hour in 2 (1/2 hour in the morning and evening)</body></html>";
+		titleText.setText(Html.fromHtml(txt1), TextView.BufferType.SPANNABLE);
+		String txt2 = "<html><body><strong> <font color='#f69135'>Sports is a fun</font></strong>  and enjoyable activity that also strengthens your body and mind. Make it a part of your daily routine</p> </body></html>";
+		secondTxt.setText(Html.fromHtml(txt2), TextView.BufferType.SPANNABLE);
+		thirdTxt.setText(Html.fromHtml(getString(R.string.beActive_3)), TextView.BufferType.SPANNABLE);
+		forthTxt.setText(Html.fromHtml(getString(R.string.beActive_4)), TextView.BufferType.SPANNABLE);
+		fiveTxt.setText(Html.fromHtml(getString(R.string.beActive_5)), TextView.BufferType.SPANNABLE);
+		sixthTxt.setText(Html.fromHtml(getString(R.string.beActive_6)), TextView.BufferType.SPANNABLE);
+		sevenTxt.setText(Html.fromHtml(getString(R.string.beActive_7)), TextView.BufferType.SPANNABLE);
+		eightTxt.setText(Html.fromHtml(getString(R.string.beActive_8)), TextView.BufferType.SPANNABLE);
+		nineTxt.setText("");
+		tenTxtView.setText("");
+		
+	}
+	
+	private void didYouKnowTxt(){
+		
+		titleText.setText(Html.fromHtml(getString(R.string.didYouKnow_1)));
+		secondTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_2)));
+		thirdTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_3)));
+		forthTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_4)));
+		fiveTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_5)));
+		sixthTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_6)));
+		sevenTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_7)));
+		eightTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_8)));
+		nineTxt.setText(Html.fromHtml(getString(R.string.didYouKnow_9)));
+		tenTxtView.setText(Html.fromHtml(getString(R.string.didYouKnow_10)));
+	}
+	
+	private void beStrongTxt(){
+		
+		titleText.setText(Html.fromHtml(getString(R.string.beStrong_1)));
+		secondTxt.setText(Html.fromHtml(getString(R.string.beStrong_2)));
+		thirdTxt.setText(Html.fromHtml(getString(R.string.beStrong_3)));
+		forthTxt.setText(Html.fromHtml(getString(R.string.beStrong_4)));
+		fiveTxt.setText(Html.fromHtml(getString(R.string.beStrong_5)));
+		sixthTxt.setText(Html.fromHtml(getString(R.string.beStrong_6)));
+		sevenTxt.setText(Html.fromHtml(getString(R.string.beStrong_7)));
+		eightTxt.setText(Html.fromHtml(getString(R.string.beStrong_8)));
+		nineTxt.setText(Html.fromHtml(getString(R.string.beStrong_9)));
+		tenTxtView.setText(Html.fromHtml(getString(R.string.beStrong_10)));
+	}
+
+	@Override
+	public void onClick(View view) {
+		
+		if(view == didYouKnowLayoutView){
+			
+			getActivity().runOnUiThread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					didYouKnowTxt();		
+				}
+			});
+			
+			titleTxt.setText(getActivity().getResources().getString(R.string.titledidYouKnow));
+			didYouKnowLayout.setVisibility(View.VISIBLE);
+			weStrongLayout.setVisibility(View.INVISIBLE);
+			beActiveLayout.setVisibility(View.INVISIBLE);
+			topLayoutView.setBackgroundResource(R.drawable.did_you_know_bg);
+		}else if(view == beActivateLayoutView){
+			
+			setBeActivateTxt();
+			titleTxt.setText(getActivity().getResources().getString(R.string.titleBeActive));
+			didYouKnowLayout.setVisibility(View.INVISIBLE);
+			weStrongLayout.setVisibility(View.INVISIBLE);
+			beActiveLayout.setVisibility(View.VISIBLE);
+			topLayoutView.setBackgroundResource(R.drawable.be_active_bg);
+		}else if(view == beStrongLayoutView){
+			
+			beStrongTxt();
+			titleTxt.setText(getActivity().getResources().getString(R.string.titleBeStrongTxt));
+			didYouKnowLayout.setVisibility(View.INVISIBLE);
+			weStrongLayout.setVisibility(View.VISIBLE);
+			beActiveLayout.setVisibility(View.INVISIBLE);
+			topLayoutView.setBackgroundResource(R.drawable.be_strong_bg);
+		}
+	}
+}
+
+
+*************************************************************xml file***************************************
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_bg"
+    android:paddingBottom="0dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingTop="10dp"
+    tools:context=".MainActivity" >
+
+    
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@drawable/bgg" >
+
+        <RelativeLayout
+            android:id="@+id/topStripLayoutView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/be_active_bg" >
+
+            <TextView
+                android:id="@+id/topTitleViewTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:text="@string/titleBeActive"
+                android:textAllCaps="true"
+                android:textColor="@android:color/white" />
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/topStripLayoutView"
+            android:background="@android:color/transparent" >
+
+            <LinearLayout
+                android:id="@+id/beActive"
+                android:layout_width="match_parent" 
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="10dp"
+                android:visibility="invisible" >
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_1"
+                        android:text="@string/beActive_1"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_2" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_2"
+                        android:text="@string/beActive_2"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_3"
+                        android:text="@string/beActive_3"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_4"
+                        android:text="@string/beActive_4"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_5" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_5"
+                        android:text="@string/beActive_6"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_6"
+                        android:text="@string/beActive_6"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_7" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_7"
+                        android:text="@string/beActive_7"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/bullet_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/beActive_8" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/bullet_8"
+                        android:text="@string/beActive_8"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            
+            
+            <!-- Did You Know -->
+            
+            <LinearLayout
+                android:id="@+id/didYouKnow"
+                android:layout_width="match_parent" 
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="10dp"
+                android:visibility="invisible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_1"
+                        android:text="@string/didYouKnow_1"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_2"
+                        android:text="@string/didYouKnow_2"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_3"
+                        android:text="@string/didYouKnow_3"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_4"
+                        android:text="@string/didYouKnow_4"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_5"
+                        android:text="@string/didYouKnow_5"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_6"
+                        android:text="@string/didYouKnow_6"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_7"
+                        android:text="@string/didYouKnow_7"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_8"
+                        android:text="@string/didYouKnow_8"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_9"
+                        android:text="@string/didYouKnow_9"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/dykBullet_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/dykBullet_10"
+                        android:text="@string/didYouKnow_10"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+            </LinearLayout>
+            
+            <!-- Be Strong -->
+            
+            <LinearLayout
+                android:id="@+id/weStrong" 
+                android:layout_width="match_parent" 
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="7dp"
+                android:paddingRight="7dp"
+                android:paddingTop="10dp"
+                android:visibility="visible">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true" android:id="@+id/firstTxt"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/beStrongBullet_1"
+                        android:text="@string/beStrong_1"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/secondTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_2"
+                        android:text="@string/beStrong_2"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/thirdTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_3"
+                        android:text="@string/beStrong_3"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/fourthTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_4"
+                        android:text="@string/beStrong_4"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/fiveTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_5"
+                        android:text="@string/beStrong_5"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/sixviewTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_6"
+                        android:text="@string/beStrong_6"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/seventhTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_7"
+                        android:text="@string/beStrong_7"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="5dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet"
+                        android:contentDescription="@string/titleDidYouKnow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/eightTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_8"
+                        android:text="@string/beStrong_8"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bullet_small"
+                        android:contentDescription="@string/titleBeStrong" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/nineTxt"
+                        android:layout_toRightOf="@+id/beStrongBullet_9"
+                        android:text="@string/beStrong_9"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="30dp"
+                    android:paddingRight="30dp" >
+
+                    <ImageView
+                        android:id="@+id/beStrongBullet_10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"  
+                        android:background="@drawable/bullet_small"
+                        android:contentDescription="@string/titleBeStrong" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp" android:id="@+id/tenTxtView"
+                        android:layout_toRightOf="@+id/beStrongBullet_10"
+                        android:text="@string/beStrong_10"
+                        android:textColor="@android:color/black"
+                        android:textSize="11sp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="9dp"
+            android:paddingRight="1dp" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content" android:id="@+id/beActivateLayoutView"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/be_active"
+                    android:contentDescription="@string/titleBeActive" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/titleBeActive"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sep"
+                android:contentDescription="@string/titleBeActive" />
+
+            <RelativeLayout android:id="@+id/didYouKnowLayoutView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/did_you_know"
+                    android:contentDescription="@string/titleDidYouKnow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/titleDidYouKnow"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+
+            <ImageView
+                android:contentDescription="@string/titleDidYouKnow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sep" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content" android:id="@+id/beStrongLayoutView"
+                android:layout_height="wrap_content"
+                android:background="@android:color/darker_gray" >
+
+                <ImageView
+                    android:contentDescription="@string/titleBeStrong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/be_strong" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/titleBeStrong"
+                    android:textColor="@android:color/white"
+                    android:textSize="11sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        
+    </RelativeLayout>
+
+</RelativeLayout>
+
+
+
+
